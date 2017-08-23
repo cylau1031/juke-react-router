@@ -6,6 +6,7 @@ import SingleArtist from './SingleArtist';
 import StatefulAlbums from './StatefulAlbums';
 import Sidebar from './Sidebar';
 import Player from './Player';
+import NotFound from './NotFound';
 import {HashRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
 export default class Main extends Component {
@@ -24,7 +25,8 @@ export default class Main extends Component {
             <Sidebar />
           </div>
           <div className="col-xs-10">
-            <Route
+          <Switch>
+          <Route
               exact path = "/"
               component = {StatefulAlbums}>
             </Route>
@@ -33,7 +35,7 @@ export default class Main extends Component {
               component = {StatefulAlbums}>
             </Route>
             <Route
-              path="/albums/:albumId"
+              exact path="/albums/:albumId"
               component = {SingleAlbum}>
             </Route>
             <Route
@@ -41,10 +43,14 @@ export default class Main extends Component {
               component = {AllArtists}>
             </Route>
             <Route
-              path="/artists/:artistId"
+              exact path="/artists/:artistId"
               component = {SingleArtist}>
             </Route>
-      </div>
+            <Route
+              component = {NotFound}>
+          </Route>
+          </Switch>
+          </div>
         <Player />
       </div>
       </Router>
