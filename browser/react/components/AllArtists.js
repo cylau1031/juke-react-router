@@ -30,7 +30,7 @@ export default class AllArtists extends Component {
           <tbody>
             {
               artists && artists.map(artist => (
-                <tr key={artist.id}>
+                <tr key={artist.id} className="list-group-item">
                   <td><Link to={`/artists/${artist.id}`}>{ artist.name }</Link></td>
                 </tr>
               ))
